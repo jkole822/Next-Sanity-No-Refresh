@@ -77,7 +77,7 @@ const Home: NextPage = () => {
                   Only those pages that are specified by the getStaticPaths
                   function will be generated at build time while all other pages
                   will be server-side rendered. When the fallback parameter of
-                  getStaticPaths is set to &ldbquo;blocking&rdbquo;, the page
+                  getStaticPaths is set to &ldquo;blocking&rdquo;, the page
                   will not be shown until the page can be hydrated with data.
                 </p>
                 <p>
