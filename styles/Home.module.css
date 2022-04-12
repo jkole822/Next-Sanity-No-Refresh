@@ -5,11 +5,11 @@
 .main {
   min-height: 100vh;
   padding: 4rem 0;
-  flex: 1;
+  /* flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .footer {
@@ -28,9 +28,18 @@
   flex-grow: 1;
 }
 
-.title a {
+.title a,
+.reference {
   color: #0070f3;
   text-decoration: none;
+}
+
+.reference:hover {
+  color: black;
+}
+
+.sliderContainer {
+  margin-top: 60px;
 }
 
 .title a:hover,
@@ -74,7 +83,8 @@
 }
 
 .card {
-  margin: 1rem;
+  display: block !important;
+  margin: 0 auto;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -82,7 +92,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 600px;
 }
 
 .card:hover,
@@ -111,6 +121,5 @@
 @media (max-width: 600px) {
   .grid {
     width: 100%;
-    flex-direction: column;
   }
 }

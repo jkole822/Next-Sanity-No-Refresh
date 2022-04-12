@@ -14,3 +14,64 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.item-header {
+  font-size: large;
+  text-transform: uppercase;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.item-text {
+  font-size: medium;
+}
+
+main {
+  margin: 10px 20px;
+}
+
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  width: 100vw;
+}
+
+.grid-item,
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product {
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 40px auto;
+}
+
+.slick-dots li button:before {
+  color: black !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}

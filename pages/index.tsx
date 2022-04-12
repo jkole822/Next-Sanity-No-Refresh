@@ -1,7 +1,17 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+// Packages
+import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
+import Slider from "react-slick";
+
+// Lib
+import { settings } from "../lib/slick";
+
+// Styles
+import styles from "../styles/Home.module.css";
+
+// Types
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
@@ -14,42 +24,85 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <a href="https://nextjs.org">Next.js</a> Data Fetching
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <div className={styles.sliderContainer}>
+          <Slider {...settings}>
+            <Link href="/csr">
+              <a className={styles.card}>
+                <h2>CSR</h2>
+                <p>
+                  Client-Side Rendering, this is the usual kind of data fetching
+                  using useEffect, it will fetch the data from the API every
+                  single page request on the client-side (after the page is
+                  rendered, then the function will run).
+                </p>
+              </a>
+            </Link>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+            <Link href="/ssr">
+              <a className={styles.card}>
+                <h2>SSR</h2>
+                <p>
+                  Server-Side Rendering, will run a special function
+                  (getServerSideProps) to fetch data from API every page request
+                  on the server-side (before the page is loaded, that special
+                  function will run first, creating a delay, then after that, it
+                  will serve the page).
+                </p>
+              </a>
+            </Link>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            <Link href="/ssg">
+              <a className={styles.card}>
+                <h2>SSG</h2>
+                <p>
+                  Static Site Generation, will run a special function
+                  (getStaticProps) to fetch data once when that page builds.
+                </p>
+              </a>
+            </Link>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            <Link href="/blocking-isr">
+              <a className={styles.card}>
+                <h2>ISR with Blocking Fallback</h2>
+                <p>
+                  Incremental Static Regeneration is a combination of SSG, and
+                  SSR, where the page is served statically, but at a certain
+                  time and condition that page will rebuild and fetch the data
+                  from the API again.
+                </p>
+                <p>
+                  Only those pages that are specified by the getStaticPaths
+                  function will be generated at build time while all other pages
+                  will be server-side rendered. When the fallback parameter of
+                  getStaticPaths is set to &ldbquo;blocking&rdbquo;, the page
+                  will not be shown until the page can be hydrated with data.
+                </p>
+                <p>
+                  Important to note, initial ISR load time is slow because of
+                  upload speed, and more specifically, back and forth
+                  communication with the CDN. This communication issue can be
+                  circumvented by programmatically setting the window location
+                  to the destination url.
+                </p>
+              </a>
+            </Link>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            <Link href="/true-isr">
+              <a className={styles.card}>
+                <h2>ISR with True Fallback</h2>
+                <p>
+                  When the fallback parameter of getStaticPaths is set to
+                  `true`, the page will be initially generated with no data,
+                  and then hydrated once data is received. Therefore, is
+                  important to conditionally display a fallback until data is
+                  received.
+                </p>
+              </a>
+            </Link>
+          </Slider>
         </div>
       </main>
 
@@ -59,14 +112,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
